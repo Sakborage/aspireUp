@@ -1,4 +1,4 @@
-import MentorConnectImg from "../assests/images/MentorConnect.png";
+import MentorConnectImg from "../../../assests/images/MentorConnect.png";
 
 const MentorConnect = () => {
     return (

@@ -1,4 +1,4 @@
-import ManImage from '../assests/images/Man.png';
+import ManImage from '../../../assests/images/Man.png';
 function First() {
     return (
       <div className="flex flex-row items-center justify-center px-8 py-6 my-2  mx-8">

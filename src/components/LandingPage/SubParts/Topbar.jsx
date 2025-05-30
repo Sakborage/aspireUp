@@ -1,4 +1,4 @@
-import AspireUP from "./AspireUp";
+import AspireUP from "../../User/SubParts/AspireUp";
 
 import { Link } from "react-scroll";
 import { Link as RouterLink } from "react-router-dom";

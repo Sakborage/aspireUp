@@ -1,5 +1,5 @@
-import AspireUP from "./AspireUp";
-import Second from "../assests/images/SecondDash.png";
+import AspireUP from "../../User/SubParts/AspireUp";
+import Second from "../../../assests/images/SecondDash.png";
 
 function SecondPart() {
     return (  

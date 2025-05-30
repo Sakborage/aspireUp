@@ -1,4 +1,4 @@
-import JobSeeker from "../assests/images/JobSeeker.png"; // Fixed "assests" typo
+import JobSeeker from "../../../assests/images/JobSeeker.png"; // Fixed "assests" typo
 
 function JobSeekerHub() {
     return ( 

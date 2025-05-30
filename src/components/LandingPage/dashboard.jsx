@@ -1,10 +1,10 @@
-import AboutUs from "../components/AboutUs";
-import First from "../components/HomeSection";
-import JobListings from "../components/JobListings";
-import JobSeekerHub from "../components/JobSeekerHub";
-import MentorConnect from "../components/MentorConnect";
-import SecondPart from "../components/SecondPart";
-import TopBar from "../components/Topbar";
+import AboutUs from "./SubParts/AboutUs";
+import First from "./SubParts/HomeSection";
+import JobListings from "./SubParts/JobListings";
+import JobSeekerHub from "./SubParts/JobSeekerHub";
+import MentorConnect from "./SubParts/MentorConnect";
+import SecondPart from "./SubParts/SecondPart";
+import TopBar from "./SubParts/Topbar";
 
 function DashBoard() {
     return (  

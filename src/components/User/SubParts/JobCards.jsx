@@ -1,7 +1,7 @@
-import googleIcon from "../assests/images/google.png";
-import adobeicon from "../assests/images/Adobe.png";
-import walmartIcon from "../assests/images/walmart.jpg";
-import microsoftIcon from "../assests/images/Mi.png"
+import googleIcon from "../../../assests/images/google.png";
+import adobeicon from "../../../assests/images/Adobe.png";
+import walmartIcon from "../../../assests/images/walmart.jpg";
+import microsoftIcon from "../../../assests/images/Mi.png"
 const jobList = [
     {
         id: 1,

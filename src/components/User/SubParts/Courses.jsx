@@ -1,6 +1,6 @@
 import React from "react";
-import python from "../assests/images/python.jpg";
-import database from "../assests/images/Database.png";
+import python from "../../../assests/images/python.jpg";
+import database from "../../../assests/images/Database.png";
 
 
 const courses = [

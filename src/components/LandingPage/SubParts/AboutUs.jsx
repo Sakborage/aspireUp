@@ -1,5 +1,5 @@
 import Footer from "./Footer";
-import AboutUsImg from "../assests/images/AboutUs.png"; // Fixed "assests" typo
+import AboutUsImg from "../../../assests/images/AboutUs.png"; // Fixed "assests" typo
 
 function AboutUs() {
     return (  
@@ -38,7 +38,7 @@ function AboutUs() {
 
             {/* Footer */}
             <div className="mt-6">
-                <Footer />
+                <Footer/>
             </div>
         </div>
     );

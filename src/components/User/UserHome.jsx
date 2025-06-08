@@ -4,9 +4,15 @@ import JobTable from "./SubParts/JobTable";
 
 import SearchIcon from "../../assests/images/SearchIcon.png";
 import JobIcon from "../../assests/images/JobIcon.png";
+import ExploreAllButton from "./SubParts/ExploreAllButton";
+import { useNavigate } from "react-router-dom";
+import JobRow from "./SubParts/JobRow";
+
 
 
 function UserHome() {
+     const navigate = useNavigate();
+
     return (
         <div>
             <div className="w-full max-w-4xl mt-6">
@@ -30,7 +36,12 @@ function UserHome() {
                 
                 {/* Job Cards */}
                 <div className="w-full px-4">
-                    <Jobs/>
+                   <JobRow/>
+                </div>
+
+                <div className="flex items-end justify-end">
+                    <ExploreAllButton onClick={() => navigate("/home/UserJobs")}/>
+
                 </div>
             </div>
 

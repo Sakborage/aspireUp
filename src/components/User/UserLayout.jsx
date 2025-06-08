@@ -16,7 +16,7 @@ function UserLayout() {
                        <UserNav/>
                     </div>
 
-                    <main className="w-full max-w-4xl mt-6">
+                    <main className="w-full max-w-4xl mt-6 items-center">
                        <Outlet />
                     </main>
         </div>

@@ -76,7 +76,7 @@ export default function AddCourse() {
         </div>
         <div className=" flex justify-center ">
         <button type="submit"
-          className="bg-accent text-white py-2 px-6 rounded-lg hover:bg-blue-700 transition">
+          className="bg-teal-600 text-white py-2 px-6 rounded-lg hover:bg-teal-700 transition">
           Add Course
         </button>
         </div>

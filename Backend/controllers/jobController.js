@@ -31,3 +31,24 @@ exports.getAllJobs = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+exports.deleteJob = async (req, res) => {
+  try {
+    const jobId = req.params.id;  
+
+    const deletedJob = await Job.findByIdAndDelete(jobId);
+
+    if (!deletedJob) {
+      return res.status(404).json({ message: "Job not found" });
+    }
+
+    res.status(200).json({ message: "Job deleted successfully" });
+  } catch (error) {
+    console.error("Delete job error:", error);
+    res.status(500).json({ error: "Failed to delete job" });
+  }
+};
+
+
+
+

@@ -7,11 +7,36 @@ function CoursesList() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    fetchCourses();
+  }, []);
+
+  const fetchCourses = () => {
     fetch("http://localhost:5000/api/courses/all")
       .then((res) => res.json())
       .then((data) => setCourses(data))
       .catch((err) => console.error("Failed to fetch courses:", err));
-  }, []);
+  };
+
+  const handleDelete = async (id) => {
+    const confirmDelete = window.confirm("Are you sure you want to delete this course?");
+    if (!confirmDelete) return;
+
+    try {
+      const res = await fetch(`http://localhost:5000/api/courses/${id}`, {
+        method: "DELETE",
+      });
+
+      if (res.ok) {
+        setCourses((prevCourses) => prevCourses.filter((course) => course._id !== id));
+        alert("Course deleted successfully!");
+      } else {
+        alert("Failed to delete course.");
+      }
+    } catch (error) {
+      console.error("Error deleting course:", error);
+      alert("Something went wrong while deleting.");
+    }
+  };
 
   const filteredCourses = courses.filter((course) =>
     course.title.toLowerCase().includes(searchTerm.toLowerCase())
@@ -70,7 +95,10 @@ function CoursesList() {
               <button className="bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition w-1/2 mr-2">
                 Edit
               </button>
-              <button className="bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition w-1/2 ml-2">
+              <button
+                className="bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition w-1/2 ml-2"
+                onClick={() => handleDelete(course._id)}
+              >
                 Delete
               </button>
             </div>

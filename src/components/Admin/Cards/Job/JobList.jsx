@@ -13,6 +13,27 @@ function JobList() {
       .catch((err) => console.error("Failed to fetch jobs:", err));
   }, []);
 
+  const handleDelete = async (id) => {
+    const confirmDelete = window.confirm("Are you sure you want to delete this job?");
+    if (!confirmDelete) return;
+
+    try {
+      const res = await fetch(`http://localhost:5000/api/jobs/${id}`, {
+        method: "DELETE",
+      });
+
+      if (res.ok) {
+        setJobs((prevJobs) => prevJobs.filter((job) => job._id !== id));
+        alert("Job deleted successfully!");
+      } else {
+        alert("Failed to delete job.");
+      }
+    } catch (error) {
+      console.error("Error deleting job:", error);
+      alert("Something went wrong while deleting.");
+    }
+  };
+
   const filteredJobs = jobs.filter((job) =>
     job.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -68,8 +89,6 @@ function JobList() {
               <p className="text-xs text-gray-600 mt-2 break-words overflow-hidden line-clamp-2 min-h-[40px]">
                 {job.description}
               </p>
-
-              {/* Applicants count - you can add this field later if you want */}
             </div>
 
             {/* Buttons */}
@@ -77,7 +96,10 @@ function JobList() {
               <button className="bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition w-1/2 mr-2">
                 Edit
               </button>
-              <button className="bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition w-1/2 ml-2">
+              <button
+                className="bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition w-1/2 ml-2"
+                onClick={() => handleDelete(job._id)}
+              >
                 Delete
               </button>
             </div>

@@ -1,6 +1,6 @@
 const express = require('express');
 const multer = require('multer');
-const { addCourse, getAllCourses } = require('../controllers/courseController');
+const { addCourse, getAllCourses, deleteCourse } = require('../controllers/courseController');
 
 const router = express.Router();
 
@@ -17,4 +17,9 @@ router.post('/add', upload.fields([
 
 router.get('/all', getAllCourses);
 
+
+router.delete("/:id", deleteCourse);
+
+
 module.exports = router;
+

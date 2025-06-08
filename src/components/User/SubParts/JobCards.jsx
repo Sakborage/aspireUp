@@ -5,7 +5,7 @@ function Jobs({job}) {
                     <div
                         className="w-[280px] h-[320px] bg-white shadow-md rounded-lg p-4 flex flex-col flex-shrink-0 snap-start relative" >
                         {/* Logo */}
-                        <img src={job.logo} alt={job.company} className="w-12 h-12 mb-2 object-contain" />
+                        <img src={`http://localhost:5000/${job.logoUrl}`} alt={job.company} className="w-12 h-12 mb-2 object-contain" />
 
                         {/* Job Details - Flexible Content Area */}
                         <div className="flex-grow pb-16"> {/* Adjusted padding-bottom */}

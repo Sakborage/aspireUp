@@ -27,28 +27,27 @@ function App() {
   //Route for user  // 
   /*
    <>
-   
   <BrowserRouter>
       <Routes>
-      
+        {/* User layout with nested routes */}
         <Route path="/home" element={<UserLayout />}>
           <Route index element={<UserHome />} />
           <Route path="UserJobs" element={<UserJob />} />
         </Route>
 
-      
+        {/* Public routes */}
         <Route path="/" element={<DashBoard />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUp />} />
 
-        
+        {/* Profile route outside user layout as in your original */}
         <Route path="/profile" element={<UserProfile />} />
       </Routes>
     </BrowserRouter>
    </>
- */
+ 
   //Admin route remove comments to run admin route 
-  
+  /* 
   <>
   <BrowserRouter>
       <Routes>
@@ -64,7 +63,7 @@ function App() {
     </BrowserRouter>
 
   </>
-  
+  */
   );
   
 }

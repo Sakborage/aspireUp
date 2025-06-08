@@ -1,7 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
 
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import AdminLayout from './components/Admin/AdminLayout';
 import AdminJobs from './components/Admin/Cards/Job/AdminJobs';
 
@@ -22,31 +21,32 @@ import UserLayout from './components/User/UserLayout';
 
 
 
-
-const router = createBrowserRouter([
-  {
-    path: "/home", 
-    element: <UserLayout/>, // Wrap this around all routes you want inside a layout
-    children: [
-      { index: true, element: <UserHome /> },
-      { path: "UserJobs", element: <UserJob /> },
-     
-    ],
-  },
-  { path: "/", element: <DashBoard /> },
-  { path: "/login", element: <LoginPage /> },
-  { path: "/signup", element: <SignUp /> },
-   { path: "profile", element: <UserProfile /> },
-]);
-
 function App() {
   return (
-    
+  //Route for user  
    <>
-  <RouterProvider router={router} />;
+  <BrowserRouter>
+      <Routes>
+        {/* User layout with nested routes */}
+        <Route path="/home" element={<UserLayout />}>
+          <Route index element={<UserHome />} />
+          <Route path="UserJobs" element={<UserJob />} />
+        </Route>
+
+        {/* Public routes */}
+        <Route path="/" element={<DashBoard />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignUp />} />
+
+        {/* Profile route outside user layout as in your original */}
+        <Route path="/profile" element={<UserProfile />} />
+      </Routes>
+    </BrowserRouter>
    </>
-  );
-  /*<>
+ 
+  //Admin route remove comments to run admin route 
+  /* 
+  <>
   <BrowserRouter>
       <Routes>
         <Route path="/" element={<AdminLayout/>}>
@@ -60,7 +60,9 @@ function App() {
       </Routes>
     </BrowserRouter>
 
-  </>*/
+  </>
+  */
+  );
   
 }
 

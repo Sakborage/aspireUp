@@ -28,8 +28,9 @@ export default function LoginPage() {
                     <label className="block text-md font-medium">Username</label>
                     <input 
                         type="text" 
-                        className="text-sm w-full border-b-2 border-gray-400 focus:outline-none focus:border-teal-600 p-1 mt-1"
+                        className="text-sm w-full border-b-2 border-gray-400 focus:outline-none focus:border-teal-600 p-1 mt-1 "
                         placeholder="Enter username"
+                        required
                     />
                 </div>
 
@@ -37,8 +38,9 @@ export default function LoginPage() {
                     <label className="block text-md font-medium mb-0">Password</label>
                     <input 
                         type="password" 
-                        className=" test-sm w-full border-b-2 border-gray-400 focus:outline-none focus:border-teal-600 p-1 mt-1"
+                        className=" test-sm w-full border-b-2 border-gray-400 focus:outline-none focus:border-teal-600 p-1 mt-1 "
                         placeholder="Enter password"
+                        required
                     />
                 </div>
 

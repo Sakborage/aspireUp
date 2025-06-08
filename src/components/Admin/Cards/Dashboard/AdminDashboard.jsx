@@ -14,7 +14,7 @@ function AdminDashboard() {
         />
         <div>
           <h2 className="text-lg font-bold">
-            Summary <span className="text-blue-600">Statistics</span>
+            Summary <span className="text-teal-700">Statistics</span>
           </h2>
           <p className="text-gray-600 text-sm">Your Platform in Numbers</p>
         </div>
@@ -34,7 +34,7 @@ function AdminDashboard() {
           />
           <div>
             <h2 className="text-lg font-bold">
-              Current <span className="text-blue-600"> Insights & Trends</span>
+              Current <span className="text-teal-700"> Insights & Trends</span>
             </h2>
             <p className="text-gray-600 text-sm">Visual Breakdown of Platform Activity</p>
           </div>

@@ -158,7 +158,7 @@ function ApplicationTracker  ()
 
       {/* Table */}
      <div className="w-full">
-  <div className="overflow-y-auto scrollbar-hide max-h-[60vh] rounded-lg border border-gray-200">
+  <div className="overflow-y-auto scrollbar-hide max-h-[60vh] rounded-lg border overflow-x-auto scrollbar-hide">
     <table className="w-full text-sm border-collapse">
       <thead className="bg-gray-100 sticky top-0 z-10">
         <tr>

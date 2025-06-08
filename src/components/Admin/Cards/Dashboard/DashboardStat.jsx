@@ -13,7 +13,7 @@ function DashboardStat() {
             className="bg-white rounded-2xl shadow-md p-6 flex flex-col items-center justify-center text-center"
           >
             <h2 className="text-xl font-semibold text-gray-700">{item.title}</h2>
-            <p className="mt-3 text-3xl font-bold text-blue-600">{item.value}</p>
+            <p className="mt-3 text-3xl font-bold text-teal-700">{item.value}</p>
           </div>
         ))}
       </div>

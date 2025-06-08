@@ -18,54 +18,32 @@ import UserJob from './components/User/UserJob';
 import UserProfile from './components/User/SubParts/UserProfile';
 import UserLayout from './components/User/UserLayout';
 
-
-
-
 function App() {
   return (
-    
-  //Route for user  // 
-  /*
-   <>
-  <BrowserRouter>
+    <BrowserRouter>
       <Routes>
-        {/* User layout with nested routes */}
+        {/* User routes */}
         <Route path="/home" element={<UserLayout />}>
           <Route index element={<UserHome />} />
           <Route path="UserJobs" element={<UserJob />} />
         </Route>
-
-        {/* Public routes */}
         <Route path="/" element={<DashBoard />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUp />} />
-
-        {/* Profile route outside user layout as in your original */}
         <Route path="/profile" element={<UserProfile />} />
-      </Routes>
-    </BrowserRouter>
-   </>
- 
-  //Admin route remove comments to run admin route 
-  /* 
-  <>
-  <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<AdminLayout/>}>
-          <Route index element={<AdminDashboard/>} />
-          <Route path="job" element={<AdminJobs/>} />
-          <Route path="course" element={<AdminCourses/>} />
-          <Route path="application" element={<ApplicationTracker/>} />
-          <Route path="addjob" element={<AddJob/>}/>
-          <Route path="addcourse" element={<AddCourse/>}/>
+
+        {/* Admin routes */}
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route index element={<AdminDashboard />} />
+          <Route path="job" element={<AdminJobs />} />
+          <Route path="course" element={<AdminCourses />} />
+          <Route path="application" element={<ApplicationTracker />} />
+          <Route path="addjob" element={<AddJob />} />
+          <Route path="addcourse" element={<AddCourse />} />
         </Route>
       </Routes>
     </BrowserRouter>
-
-  </>
-  */
   );
-  
 }
 
 export default App;

@@ -19,10 +19,23 @@ export default function AddJob() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Job Data:", formData);
-    // Send this data to backend or API
+    const data = new FormData();
+    Object.entries(formData).forEach(([key, value]) => {
+      if (value) data.append(key, value);
+    });
+
+    try {
+      const res = await fetch('http://localhost:5000/api/jobs/add', {
+        method: 'POST',
+        body: data,
+      });
+      const result = await res.json();
+      alert(result.message || "Job added!");
+    } catch (err) {
+      alert("Error adding job");
+    }
   };
 
   return (

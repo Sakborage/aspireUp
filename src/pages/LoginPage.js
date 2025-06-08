@@ -14,7 +14,11 @@ export default function LoginPage() {
     setError("");
     try {
       await axios.post("http://localhost:5000/api/auth/login", form);
+    if (form.email === "admin12@gmail.com") {
+      navigate("/admin");
+    } else {
       navigate("/home");
+    }
     } catch (err) {
       setError(err.response?.data?.error || "Login failed");
     }

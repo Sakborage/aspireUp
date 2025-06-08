@@ -73,7 +73,7 @@ function  JobList() {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <button className="bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition "  onClick={() => navigate("/addjob")}>
+        <button className="bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition "  onClick={() => navigate("/admin/addjob")}>
           + Add New
         </button>
       </div>

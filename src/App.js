@@ -25,43 +25,32 @@ function App() {
   return (
   //Route for user  
    <>
-  <BrowserRouter>
-      <Routes>
-        {/* User layout with nested routes */}
-        <Route path="/home" element={<UserLayout />}>
-          <Route index element={<UserHome />} />
-          <Route path="UserJobs" element={<UserJob />} />
-        </Route>
+ <BrowserRouter>
+  <Routes>
+    {/* ✅ Public Routes */}
+    <Route path="/" element={<DashBoard />} />
+    <Route path="/login" element={<LoginPage />} />
+    <Route path="/signup" element={<SignUp />} />
+    <Route path="/profile" element={<UserProfile />} />
 
-        {/* Public routes */}
-        <Route path="/" element={<DashBoard />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignUp />} />
+    {/* ✅ User Layout + Nested Routes */}
+    <Route path="/home" element={<UserLayout />}>
+      <Route index element={<UserHome />} /> {/* loads on /home */}
+      <Route path="UserJobs" element={<UserJob />} /> {/* loads on /home/UserJobs */}
+    </Route>
 
-        {/* Profile route outside user layout as in your original */}
-        <Route path="/profile" element={<UserProfile />} />
-      </Routes>
-    </BrowserRouter>
-   </>
- 
-  //Admin route remove comments to run admin route 
-  /* 
-  <>
-  <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<AdminLayout/>}>
-          <Route index element={<AdminDashboard/>} />
-          <Route path="job" element={<AdminJobs/>} />
-          <Route path="course" element={<AdminCourses/>} />
-          <Route path="application" element={<ApplicationTracker/>} />
-          <Route path="addjob" element={<AddJob/>}/>
-          <Route path="addcourse" element={<AddCourse/>}/>
-        </Route>
-      </Routes>
-    </BrowserRouter>
-
-  </>
-  */
+    {/* ✅ Admin Layout + Nested Routes */}
+    <Route path="/admin" element={<AdminLayout />}>
+      <Route index element={<AdminDashboard />} /> {/* loads on /admin */}
+      <Route path="job" element={<AdminJobs />} /> {/* /admin/job */}
+      <Route path="course" element={<AdminCourses />} /> {/* /admin/course */}
+      <Route path="application" element={<ApplicationTracker />} /> {/* /admin/application */}
+      <Route path="addjob" element={<AddJob />} /> {/* /admin/addjob */}
+      <Route path="addcourse" element={<AddCourse />} /> {/* /admin/addcourse */}
+    </Route>
+  </Routes>
+</BrowserRouter>
+</>
   );
   
 }

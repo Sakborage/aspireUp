@@ -31,7 +31,7 @@ function  CoursesList() {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <button className="bg-teal-700 text-white px-4 py-2 rounded-lg hover:bg-teal-600 transition" onClick={() => navigate("/addcourse")}>
+        <button className="bg-teal-700 text-white px-4 py-2 rounded-lg hover:bg-teal-600 transition" onClick={() => navigate("/admin/addcourse")}>
           + Add New
         </button>
       </div>

@@ -6,6 +6,7 @@ const cors = require('cors');
 const authRoutes = require('./routes/auth');
 const courseRoutes = require('./routes/course');
 const jobRoutes = require('./routes/job');
+const applicationRoutes = require('./routes/application');
 const allowedOrigins = [
   'http://localhost:3000',
   'http://localhost:3001',
@@ -38,6 +39,7 @@ app.use('/uploads', express.static('uploads')); // Serve uploaded files
 app.use('/api/auth', authRoutes);
 app.use('/api/courses', courseRoutes);
 app.use('/api/jobs', jobRoutes);
+app.use('/api/applications', applicationRoutes);
 
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('MongoDB connected'))

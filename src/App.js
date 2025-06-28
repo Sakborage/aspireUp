@@ -17,6 +17,7 @@ import UserHome from './components/User/UserHome';
 import UserJob from './components/User/UserJob';
 import UserProfile from './components/User/SubParts/UserProfile';
 import UserLayout from './components/User/UserLayout';
+import JobApplicationForm from './components/User/SubParts/JobApplicationForm';
 
 
 
@@ -32,11 +33,13 @@ function App() {
     <Route path="/login" element={<LoginPage />} />
     <Route path="/signup" element={<SignUp />} />
     <Route path="/profile" element={<UserProfile />} />
+    <Route path="/apply/:jobId" element={<JobApplicationForm />} />
 
     {/* ✅ User Layout + Nested Routes */}
     <Route path="/home" element={<UserLayout />}>
       <Route index element={<UserHome />} /> {/* loads on /home */}
       <Route path="UserJobs" element={<UserJob />} /> {/* loads on /home/UserJobs */}
+      
     </Route>
 
     {/* ✅ Admin Layout + Nested Routes */}
@@ -47,6 +50,7 @@ function App() {
       <Route path="application" element={<ApplicationTracker />} /> {/* /admin/application */}
       <Route path="addjob" element={<AddJob />} /> {/* /admin/addjob */}
       <Route path="addcourse" element={<AddCourse />} /> {/* /admin/addcourse */}
+      
     </Route>
   </Routes>
 </BrowserRouter>

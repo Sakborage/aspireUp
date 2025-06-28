@@ -1,5 +1,5 @@
-
-function Jobs({job}) {
+import { useNavigate } from "react-router-dom";
+function Jobs({job}) { const navigate = useNavigate();
     return (
 
                     <div
@@ -27,9 +27,12 @@ function Jobs({job}) {
 
                         {/* Fixed Apply Button at Bottom */}
                         <div className="mt-auto">
-                            <button className="bg-teal-600 text-white py-2 rounded-lg text-sm w-full hover:bg-teal-700">
-                                Apply Now
-                            </button>
+                            <button
+  onClick={() => navigate(`/apply/${job._id}`, { state: { job } })}
+  className="bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition w-1/2 ml-2"
+>
+  Apply
+</button>
                         </div>
                     </div>
                 

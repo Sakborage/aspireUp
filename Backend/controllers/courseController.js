@@ -42,3 +42,35 @@ exports.deleteCourse = async (req, res) => {
   }
 };
 
+
+
+exports.updateCourse = async (req, res) => {
+  try {
+    const courseId = req.params.id;
+    const updatedData = req.body;
+
+    const course = await Course.findById(courseId);
+    if (!course) {
+      return res.status(404).json({ message: "Course not found" });
+    }
+
+    // Update fields from body if provided
+    course.title = updatedData.title || course.title;
+    course.description = updatedData.description || course.description;
+    course.domain = updatedData.domain || course.domain;
+    course.level = updatedData.level || course.level;
+    course.platform = updatedData.platform || course.platform;
+    course.price = updatedData.price || course.price;
+    course.oldPrice = updatedData.oldPrice || course.oldPrice;
+    course.link = updatedData.link || course.link;
+    course.imageUrl = updatedData.imageUrl || course.imageUrl;
+    course.syllabusPdfUrl = updatedData.syllabusPdfUrl || course.syllabusPdfUrl;
+
+    const updatedCourse = await course.save();
+    res.status(200).json(updatedCourse);
+  } catch (error) {
+    console.error("Error updating course:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+

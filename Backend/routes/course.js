@@ -1,6 +1,6 @@
 const express = require('express');
 const multer = require('multer');
-const { addCourse, getAllCourses, deleteCourse } = require('../controllers/courseController');
+const { addCourse, getAllCourses, deleteCourse,updateCourse } = require('../controllers/courseController');
 
 const router = express.Router();
 
@@ -19,7 +19,7 @@ router.get('/all', getAllCourses);
 
 
 router.delete("/:id", deleteCourse);
-
+router.put("/:id",updateCourse);
 
 module.exports = router;
 

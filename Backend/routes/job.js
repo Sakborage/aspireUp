@@ -1,6 +1,6 @@
 const express = require('express');
 const multer = require('multer');
-const { addJob, getAllJobs,deleteJob } = require('../controllers/jobController');
+const {addJob,getAllJobs,deleteJob,updateJob}=require('../controllers/jobController');
 
 const router = express.Router();
 
@@ -13,5 +13,6 @@ const upload = multer({ storage });
 router.post('/add', upload.single('logo'), addJob);
 router.get('/all', getAllJobs);
 router.delete('/:id',deleteJob);
+router.put('/:id',updateJob);
 
 module.exports = router;

@@ -10,7 +10,7 @@ function JobList() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/jobs/all")
+    fetch("http://localhost:5000/api/v1/jobs/all")
       .then((res) => res.json())
       .then((data) => setJobs(data))
       .catch((err) => console.error("Failed to fetch jobs:", err));
@@ -21,7 +21,7 @@ function JobList() {
     if (!confirmDelete) return;
 
     try {
-      const res = await fetch(`http://localhost:5000/api/jobs/${id}`, {
+      const res = await fetch(`http://localhost:5000/api/v1/jobs/${id}`, {
         method: "DELETE",
       });
 
@@ -46,7 +46,7 @@ function JobList() {
     e.preventDefault();
     try {
       
-      const res = await fetch(`http://localhost:5000/api/jobs/${selectedJob._id}`, {
+      const res = await fetch(`http://localhost:5000/api/v1/jobs/${selectedJob._id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(selectedJob),

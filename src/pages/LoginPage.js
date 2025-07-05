@@ -13,7 +13,7 @@ export default function LoginPage() {
     e.preventDefault();
     setError("");
     try {
-      await axios.post("http://localhost:5000/api/auth/login", form);
+      await axios.post("http://localhost:5000/api/v1/auth/login", form);
     if (form.email === "admin12@gmail.com") {
       navigate("/admin");
     } else {

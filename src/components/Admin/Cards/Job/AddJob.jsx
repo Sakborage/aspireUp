@@ -27,7 +27,7 @@ export default function AddJob() {
     });
 
     try {
-      const res = await fetch('http://localhost:5000/api/jobs/add', {
+      const res = await fetch('http://localhost:5000/api/v1/jobs/add', {
         method: 'POST',
         body: data,
       });

@@ -1,73 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Jobs from "./JobCards";
-import googleIcon from "../../../assests/images/google.png";
-import adobeicon from "../../../assests/images/Adobe.png";
-import walmartIcon from "../../../assests/images/walmart.jpg";
-import microsoftIcon from "../../../assests/images/Mi.png";
-
-const jobList = [
-  {
-    id: 1,
-    logo: googleIcon,
-    title: "Senior Software Developer",
-    company: "Google",
-    location: "Pune, Maharashtra, India",
-    type: "Full-Time",
-    salary: "$160K PA",
-    description: "Design and develop scalable software solutions...",
-  },
-  {
-    id: 2,
-    logo: adobeicon,
-    title: "Market Research Analyst",
-    company: "Adobe",
-    location: "Addis Ababa, Ethiopia",
-    type: "Full-Time",
-    salary: "$100K PA",
-    description: "Analyze market trends and customer insights...",
-  },
-  {
-    id: 3,
-    logo: walmartIcon,
-    title: "Pega Decisioning",
-    company: "Walmart",
-    location: "Moscow, Kazakhstan",
-    type: "Full-Time",
-    salary: "$93K PA",
-    description: "Design and implement business decisioning strategies...",
-  },
-  {
-    id: 4,
-    logo: microsoftIcon,
-    title: "Cloud Engineer",
-    company: "Microsoft",
-    location: "Seattle, USA",
-    type: "Full-Time",
-    salary: "$120K PA",
-    description: "Manage cloud infrastructure and optimize performance...",
-  },
-  {
-    id: 5,
-    logo: microsoftIcon,
-    title: "Cloud Architect",
-    company: "Microsoft",
-    location: "Bangalore, India",
-    type: "Full-Time",
-    salary: "$125K PA",
-    description: "Architect scalable and secure cloud solutions...",
-  },
-];
 
 function JobGrid() {
+  const [jobs, setJobs] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate();
 
-  const filteredJobs = jobList.filter((job) =>
+  useEffect(() => {
+    fetch("http://localhost:5000/api/jobs/all")
+      .then((res) => res.json())
+      .then((data) => setJobs(data))
+      .catch((err) => console.error("Failed to fetch jobs:", err));
+  }, []);
+
+  const filteredJobs = jobs.filter((job) =>
     job.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
     <div className="p-4 bg-white rounded-xl shadow h-auto flex flex-col w-full max-w-7xl mx-auto">
-      {/* Sticky Search Bar */}
+      {/* Search Bar */}
       <div className="sticky top-0 bg-white z-10 flex flex-col sm:flex-row justify-between items-center mb-4 gap-3 border-b border-gray-200 pb-3">
         <input
           type="text"
@@ -80,9 +33,13 @@ function JobGrid() {
 
       {/* Jobs Grid */}
       <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full">
-        {filteredJobs.map((job) => (
-          <Jobs key={job.id} job={job} />
-        ))}
+        {filteredJobs.length > 0 ? (
+          filteredJobs.map((job) => (
+            <Jobs key={job._id} job={job} /> // Assuming MongoDB _id
+          ))
+        ) : (
+          <p className="text-center text-gray-500 col-span-full">No jobs found.</p>
+        )}
       </div>
     </div>
   );

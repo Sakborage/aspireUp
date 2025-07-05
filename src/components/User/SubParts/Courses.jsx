@@ -7,7 +7,7 @@ function CourseGrid() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/courses/all")
+    fetch("http://localhost:5000/api/v1/courses/all")
       .then((res) => res.json())
       .then((data) => setCourses(data))
       .catch((err) => console.error("Failed to fetch courses:", err));

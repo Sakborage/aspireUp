@@ -8,7 +8,9 @@ const applicationSchema = new mongoose.Schema({
   jobTitle: String,
   jobType: String,
   resumeUrl: String,
+  status: { type: String, default: "Pending" }, // <-- add this line
   appliedAt: { type: Date, default: Date.now }
 });
 
 module.exports = mongoose.model('Application', applicationSchema);
+

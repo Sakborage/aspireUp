@@ -1,6 +1,7 @@
 const express = require('express');
 const multer = require('multer');
 const { applyForJob } = require('../controllers/applicationController');
+const { getAllApplications, updateApplicationStatus } = require('../controllers/applicationController');
 
 const router = express.Router();
 
@@ -11,5 +12,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 router.post('/apply', upload.single('resume'), applyForJob);
+router.get('/all', getAllApplications);
+router.patch('/:id/status', updateApplicationStatus);
 
 module.exports = router;

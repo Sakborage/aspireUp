@@ -13,7 +13,7 @@ export default function SignupPage() {
     e.preventDefault();
     setError("");
     try {
-      await axios.post("http://localhost:5000/api/auth/signup", form);
+      await axios.post("http://localhost:5000/api/v1/auth/signup", form);
       navigate("/login");
     } catch (err) {
       setError(err.response?.data?.error || "Signup failed");

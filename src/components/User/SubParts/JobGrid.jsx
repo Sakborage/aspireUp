@@ -8,7 +8,7 @@ function JobGrid() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/jobs/all")
+    fetch("http://localhost:5000/api/v1/jobs/all")
       .then((res) => res.json())
       .then((data) => setJobs(data))
       .catch((err) => console.error("Failed to fetch jobs:", err));

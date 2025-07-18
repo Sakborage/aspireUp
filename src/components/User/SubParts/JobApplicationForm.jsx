@@ -31,7 +31,7 @@ export default function JobApplicationForm() {
     data.append("jobType", job.type);
 
     // Send to backend endpoint for applications
-    await fetch("http://localhost:5000/api/applications/apply", {
+    await fetch("http://localhost:5000/api/v1/applications/apply", {
       method: "POST",
       body: data,
     });

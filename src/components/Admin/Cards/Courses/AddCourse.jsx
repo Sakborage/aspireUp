@@ -30,7 +30,7 @@ export default function AddCourse() {
     });
 
     try {
-      const res = await fetch('http://localhost:5000/api/courses/add', {
+      const res = await fetch('http://localhost:5000/api/v1/courses/add', {
         method: 'POST',
         body: data,
       });

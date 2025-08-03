@@ -2,11 +2,15 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const path=require("path");
 
 const authRoutes = require('./routes/auth');
 const courseRoutes = require('./routes/course');
 const jobRoutes = require('./routes/job');
 const applicationRoutes = require('./routes/application');
+const resumeRoutes=require("./routes/resume");
+
+
 const allowedOrigins = [
   'http://localhost:3000',
   'http://localhost:3001',
@@ -18,6 +22,10 @@ const allowedOrigins = [
 
 
 const app = express();
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cors({
   origin: function(origin, callback) {
@@ -40,6 +48,7 @@ app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/courses', courseRoutes);
 app.use('/api/v1/jobs', jobRoutes);
 app.use('/api/v1/applications', applicationRoutes);
+app.use('/api/v1/resume',resumeRoutes);
 
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('MongoDB connected'))

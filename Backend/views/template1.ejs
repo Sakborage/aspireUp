@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Resume - <%= data.name || "Unnamed" %></title>
+
+    <!-- FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/template1.css" />
+  </head>
+
+  <body>
+    <div class="rela-block page">
+      <div class="rela-block top-bar">
+        <div class="caps name">
+          <div class="abs-center"><%= data.name || "" %></div>
+        </div>
+      </div>
+
+      <div class="side-bar">
+        <% if (data.address) { %>
+          <p><%= data.address %></p>
+        <% } %>
+        <% if (data.location) { %>
+          <p><%= data.location %></p>
+        <% } %>
+        <% if (data.phone) { %>
+          <p><%= data.phone %></p>
+        <% } %>
+        <% if (data.email) { %>
+          <p><%= data.email %></p>
+        <% } %>
+        <% if (data.github) { %>
+          <p class="rela-block social github">
+            <i class="fab fa-github"></i> <%= data.github %>
+          </p>
+        <% } %>
+        <% if (data.linkedin) { %>
+          <p class="rela-block social linked-in"><%= data.linkedin %></p>
+        <% } %>
+
+        <% if (data.skills) {
+             const skills = data.skills.split(',').map(s => s.trim());
+        %>
+          <p class="rela-block caps side-header">Expertise</p>
+          <% skills.forEach(skill => { %>
+            <p class="rela-block list-thing"><%= skill %></p>
+          <% }) %>
+        <% } %>
+
+        <% if (data.education && data.education.length) { %>
+          <p class="rela-block caps side-header">Education</p>
+          <% data.education.forEach(edu => { %>
+            <p class="rela-block list-thing"><%= edu.school %></p>
+          <% }) %>
+        <% } %>
+      </div>
+
+      <div class="rela-block content-container">
+
+        <% if (data.objective) { %>
+          <div class="rela-block caps greyed">Profile</div>
+          <p class="long-margin"><%= data.objective %></p>
+        <% } %>
+
+        <% if (data.experience && data.experience.length) { %>
+          <div class="rela-block caps greyed">Experience</div>
+          <% data.experience.forEach(exp => { %>
+            <h3><%= exp.title %></h3>
+            <p class="light"><%= exp.startDate || "" %> – <%= exp.endDate || "Present" %></p>
+            <p class="justified"><%= exp.description %></p>
+          <% }) %>
+        <% } %>
+
+        <% if (data.projects && data.projects.length) { %>
+          <div class="rela-block caps greyed">Projects</div>
+          <% data.projects.forEach(proj => { %>
+            <h3><%= proj.title %></h3>
+            <p class="light"><%= proj.techStack %></p>
+            <p class="justified"><%= proj.description %></p>
+          <% }) %>
+        <% } %>
+
+        <% if (data.achievements) {
+             const achievementsList = data.achievements.split(',').map(a => a.trim());
+        %>
+          <div class="rela-block caps greyed">Achievements</div>
+          <% achievementsList.forEach(ach => { %>
+            <p class="justified">• <%= ach %></p>
+          <% }) %>
+        <% } %>
+
+      </div>
+    </div>
+  </body>
+</html>

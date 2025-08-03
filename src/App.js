@@ -18,7 +18,9 @@ import UserJob from './components/User/UserJob';
 import UserProfile from './components/User/SubParts/UserProfile';
 import UserLayout from './components/User/UserLayout';
 import JobApplicationForm from './components/User/SubParts/JobApplicationForm';
-
+import ResumeForm from './components/User/SubParts/ResumeForm';
+import TemplateCards from './components/User/SubParts/templates';
+import TemplateGrid from './components/User/SubParts/templateGrid';
 
 
 
@@ -28,32 +30,34 @@ function App() {
    <>
  <BrowserRouter>
   <Routes>
-    {/* ✅ Public Routes */}
     <Route path="/" element={<DashBoard />} />
     <Route path="/login" element={<LoginPage />} />
     <Route path="/signup" element={<SignUp />} />
     <Route path="/profile" element={<UserProfile />} />
     <Route path="/apply/:jobId" element={<JobApplicationForm />} />
 
-    {/* ✅ User Layout + Nested Routes */}
+    
     <Route path="/home" element={<UserLayout />}>
-      <Route index element={<UserHome />} /> {/* loads on /home */}
-      <Route path="UserJobs" element={<UserJob />} /> {/* loads on /home/UserJobs */}
+      <Route index element={<UserHome />} /> 
+      <Route path="UserJobs" element={<UserJob />} /> 
+      <Route path="Resume" element={<ResumeForm/>}/>
       
     </Route>
 
-    {/* ✅ Admin Layout + Nested Routes */}
+    
     <Route path="/admin" element={<AdminLayout />}>
-      <Route index element={<AdminDashboard />} /> {/* loads on /admin */}
-      <Route path="job" element={<AdminJobs />} /> {/* /admin/job */}
-      <Route path="course" element={<AdminCourses />} /> {/* /admin/course */}
-      <Route path="application" element={<ApplicationTracker />} /> {/* /admin/application */}
-      <Route path="addjob" element={<AddJob />} /> {/* /admin/addjob */}
-      <Route path="addcourse" element={<AddCourse />} /> {/* /admin/addcourse */}
+      <Route index element={<AdminDashboard />} /> 
+      <Route path="job" element={<AdminJobs />} /> 
+      <Route path="course" element={<AdminCourses />} />
+      <Route path="application" element={<ApplicationTracker />} /> 
+      <Route path="addjob" element={<AddJob />} /> 
+      <Route path="addcourse" element={<AddCourse />} /> 
       
     </Route>
   </Routes>
 </BrowserRouter>
+
+
 </>
   );
   

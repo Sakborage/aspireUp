@@ -14,3 +14,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.form-input {
+  @apply w-full border border-gray-300 p-3 rounded-xl focus:ring-2 focus:ring-teal-500;
+}
+
+.form-textarea {
+  @apply w-full border border-gray-300 p-3 rounded-xl focus:ring-2 focus:ring-teal-500;
+}

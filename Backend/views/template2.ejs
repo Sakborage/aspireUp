@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Resume - <%= data.name || "Unnamed" %></title>
+    <link rel="stylesheet" href="/css/template2.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  </head>
+
+  <body class="A4">
+    <div class="sheet">
+      <div class="two-column resume">
+        <section class="resume__section resume__header">
+          <div class="resume__content">
+            <h1><%= data.name || "Your Name" %></h1>
+
+            <% if (data.location) { %>
+              <div class="info-item">
+                <span class="info-label"><i class="fa fa-location-arrow"></i></span>
+                <span class="info-text"><%= data.location %></span>
+              </div>
+            <% } %>
+
+            <% if (data.email) { %>
+              <div class="info-item">
+                <span class="info-label"><i class="fa fa-envelope"></i></span>
+                <span class="info-text"><%= data.email %></span>
+              </div>
+            <% } %>
+
+            <% if (data.phone) { %>
+              <div class="info-item">
+                <span class="info-label"><i class="fa fa-phone"></i></span>
+                <span class="info-text"><%= data.phone %></span>
+              </div>
+            <% } %>
+          </div>
+        </section>
+
+        <div class="resume__columns">
+          <!-- MAIN COLUMN -->
+          <div class="resume__main">
+            <!-- Summary -->
+            <% if (data.objective) { %>
+              <section class="resume__section resume__summary">
+                <div class="resume__content">
+                  <div class="resume__section-title">
+                    <i class="fa fa-pencil-square-o"></i><h2>Professional Summary</h2>
+                  </div>
+                  <div class="other">
+                    <div class="other-info">
+                      <p><%= data.objective %></p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            <% } %>
+
+            <!-- Experience -->
+            <% if (data.experience && data.experience.length) { %>
+              <section class="resume__section resume__experience">
+                <div class="resume__content">
+                  <div class="resume__section-title">
+                    <i class="fa fa-briefcase"></i><h2>Employment History</h2>
+                  </div>
+                  <% data.experience.forEach(exp => { %>
+                    <div class="xp-item">
+                      <div class="xp-job">
+                        <%= exp.title %> 
+                        <span><%= exp.employer %></span><br/>
+                        <small><%= exp.city || "" %></small>
+                      </div>
+                      <div class="xp-date"><%= exp.startDate || "" %> – <%= exp.endDate || "Present" %></div>
+                      <div class="xp-detail">
+                        <p><%= exp.description %></p>
+                      </div>
+                    </div>
+                  <% }) %>
+                </div>
+              </section>
+            <% } %>
+
+            <!-- Projects -->
+            <% if (data.projects && data.projects.length) { %>
+              <section class="resume__section resume__experience">
+                <div class="resume__content">
+                  <div class="resume__section-title">
+                    <i class="fa fa-folder-open"></i><h2>Projects</h2>
+                  </div>
+                  <% data.projects.forEach(proj => { %>
+                    <div class="xp-item">
+                      <div class="xp-job">
+                        <%= proj.title %><br/>
+                        <small><%= proj.techStack %></small>
+                      </div>
+                      <div class="xp-detail">
+                        <p><%= proj.description %></p>
+                      </div>
+                    </div>
+                  <% }) %>
+                </div>
+              </section>
+            <% } %>
+          </div>
+
+          <!-- SIDE COLUMN -->
+          <div class="resume__side">
+            <!-- Skills -->
+            <% if (data.skills) {
+                const skills = data.skills.split(',').map(s => s.trim());
+            %>
+              <section class="resume__section resume__skills">
+                <div class="resume__content">
+                  <div class="resume__section-title">
+                    <i class="fa fa-align-center"></i><h2>Skills</h2>
+                  </div>
+                  <div class="resume__text">
+                    <% skills.forEach(skill => { %>
+                      <div class="extra">
+                        <div class="extra-info"><%= skill %></div>
+                      </div>
+                    <% }) %>
+                  </div>
+                </div>
+              </section>
+            <% } %>
+
+            <!-- Languages -->
+            <% if (data.languages) {
+                const langs = data.languages.split(',').map(l => l.trim());
+            %>
+              <section class="resume__section resume__languages">
+                <div class="resume__content">
+                  <div class="resume__section-title">
+                    <i class="fa fa-globe"></i><h2>Languages</h2>
+                  </div>
+                  <% langs.forEach(lang => { %>
+                    <div class="extra">
+                      <div class="extra-info"><%= lang %></div>
+                    </div>
+                  <% }) %>
+                </div>
+              </section>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -20,39 +20,47 @@
                     <img class="profile" src="<%= data.image %>" alt="Profile Photo" />
                 <% } %>
                 <h1 class="name"><%= data.name %></h1>
-                <h3 class="tagline"><%= data.tagline %></h3>
-            </div>
-            <div class="contact-container container-block">
-                <ul class="list-unstyled contact-list">
-                    <li class="email"><i class="fa-solid fa-envelope"></i><a href="mailto:<%= data.email %>"><%= data.email %></a></li>
-                    <li class="phone"><i class="fa-solid fa-phone"></i><a href="tel:<%= data.phone %>"><%= data.phone %></a></li>
-                    <li class="website"><i class="fa-solid fa-globe"></i><a href="<%= data.website %>" target="_blank"><%= data.website %></a></li>
-                    <li class="linkedin"><i class="fa-brands fa-linkedin-in"></i><a href="<%= data.linkedin %>" target="_blank"><%= data.linkedin %></a></li>
-                    <li class="github"><i class="fa-brands fa-github"></i><a href="<%= data.github %>" target="_blank"><%= data.github %></a></li>
-                    <li class="twitter"><i class="fa-brands fa-x-twitter"></i><a href="<%= data.twitter %>" target="_blank"><%= data.twitter %></a></li>
-                </ul>
+                <h3 class="tagline"><%= data.tagline || " " %></h3>
             </div>
 
+            <% if (data.email || data.phone || data.website || data.linkedin || data.github ) { %>
+            <div class="contact-container container-block">
+                <ul class="list-unstyled contact-list">
+                    <% if (data.email) { %><li class="email"><i class="fa-solid fa-envelope"></i><a href="mailto:<%= data.email %>"><%= data.email %></a></li><% } %>
+                    <% if (data.phone) { %><li class="phone"><i class="fa-solid fa-phone"></i><a href="tel:<%= data.phone %>"><%= data.phone %></a></li><% } %>
+                    <% if (data.website) { %><li class="website"><i class="fa-solid fa-globe"></i><a href="<%= data.website %>" target="_blank"><%= data.website %></a></li><% } %>
+                    <% if (data.linkedin) { %><li class="linkedin"><i class="fa-brands fa-linkedin-in"></i><a href="<%= data.linkedin %>" target="_blank"><%= data.linkedin %></a></li><% } %>
+                    <% if (data.github) { %><li class="github"><i class="fa-brands fa-github"></i><a href="<%= data.github %>" target="_blank"><%= data.github %></a></li><% } %>
+                    <% if (data.twitter) { %><li class="twitter"><i class="fa-brands fa-x-twitter"></i><a href="<%= data.twitter %>" target="_blank"><%= data.twitter %></a></li><% } %>
+                </ul>
+            </div>
+            <% } %>
+
+            <% if (data.education && data.education.length > 0) { %>
             <div class="education-container container-block">
                 <h2 class="container-block-title">Education</h2>
                 <% data.education.forEach(edu => { %>
                     <div class="item">
-                        <h4 class="degree"><%= edu.degree %></h4>
-                        <h5 class="meta"><%= edu.institution %></h5>
-                        <div class="time"><%= edu.duration %></div>
+                        <h4 class="degree"><%= edu.level %></h4>
+                        <h5 class="meta"><%= edu.school %></h5>
+                        <div class="time"><%= edu.graduationDate %></div>
                     </div>
                 <% }) %>
             </div>
+            <% } %>
 
+            <% if (data.languages && data.languages.trim().length > 0) { %>
             <div class="languages-container container-block">
                 <h2 class="container-block-title">Languages</h2>
                 <ul class="list-unstyled interests-list">
-                    <% data.languages.forEach(lang => { %>
-                        <li><%= lang.name %> <span class="lang-desc">(<%= lang.level %>)</span></li>
+                    <% data.languages.split(',').forEach(lang => { %>
+                        <li><%= lang.trim() %></li>
                     <% }) %>
                 </ul>
             </div>
+            <% } %>
 
+            <% if (data.hobbies && data.hobbies.trim().length > 0) { %>
             <div class="interests-container container-block">
                 <h2 class="container-block-title">Interests</h2>
                 <ul class="list-unstyled interests-list">
@@ -61,16 +69,20 @@
                     <% }) %>
                 </ul>
             </div>
+            <% } %>
         </div>
 
         <div class="main-wrapper">
+            <% if (data.objective && data.objective.trim().length > 0) { %>
             <section class="section summary-section">
                 <h2 class="section-title"><span class="icon-holder"><i class="fa-solid fa-user"></i></span>Career Profile</h2>
                 <div class="summary">
                     <p><%= data.objective %></p>
                 </div>
             </section>
+            <% } %>
 
+            <% if (data.experience && data.experience.length > 0) { %>
             <section class="section experiences-section">
                 <h2 class="section-title"><span class="icon-holder"><i class="fa-solid fa-briefcase"></i></span>Experiences</h2>
                 <% data.experience.forEach(exp => { %>
@@ -78,9 +90,9 @@
                         <div class="meta">
                             <div class="upper-row">
                                 <h3 class="job-title"><%= exp.title %></h3>
-                                <div class="time"><%= exp.duration %></div>
+                                <div class="time"><%= exp.endDate %></div>
                             </div>
-                            <div class="company"><%= exp.company %></div>
+                            <div class="company"><%= exp.employer %></div>
                         </div>
                         <div class="details">
                             <p><%= exp.description %></p>
@@ -88,7 +100,9 @@
                     </div>
                 <% }) %>
             </section>
+            <% } %>
 
+            <% if (data.projects && data.projects.length > 0) { %>
             <section class="section projects-section">
                 <h2 class="section-title"><span class="icon-holder"><i class="fa-solid fa-archive"></i></span>Projects</h2>
                 <% data.projects.forEach(project => { %>
@@ -98,21 +112,23 @@
                     </div>
                 <% }) %>
             </section>
+            <% } %>
 
-           <section class="skills-section section">
-  <h2 class="section-title"><span class="icon-holder"><i class="fa-solid fa-rocket"></i></span>Skills &amp; Proficiency</h2>
-  <div class="skillset">
-    <ul class="item">
-      <% if (data.skills) { 
-          const skillsArray = data.skills.split(','); 
-          skillsArray.forEach(skill => { %>
-            <li><%= skill.trim() %></li>
-      <%   }); 
-         } %>
-    </ul>
-  </div>
-</section>
+            <% if (data.skills && data.skills.trim().length > 0) { 
+                const skillsArray = data.skills.split(','); %>
+            <section class="skills-section section">
+                <h2 class="section-title"><span class="icon-holder"><i class="fa-solid fa-rocket"></i></span>Skills &amp; Proficiency</h2>
+                <div class="skillset">
+                    <ul class="item">
+                        <% skillsArray.forEach(skill => { %>
+                            <li><%= skill.trim() %></li>
+                        <% }) %>
+                    </ul>
+                </div>
+            </section>
+            <% } %>
 
+            <% if (data.achievements && data.achievements.trim().length > 0) { %>
             <section class="section awards-section">
                 <h2 class="section-title"><span class="icon-holder"><i class="fa-solid fa-trophy"></i></span>Achievements</h2>
                 <ul>
@@ -121,13 +137,10 @@
                     <% }) %>
                 </ul>
             </section>
+            <% } %>
         </div>
     </div>
 
-    <footer class="footer">
-        <div class="text-center">
-            <small class="copyright">Designed with <i class="fa-solid fa-heart"></i> by <a href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for developers</small>
-        </div>
-    </footer>
+    
 </body>
 </html>
